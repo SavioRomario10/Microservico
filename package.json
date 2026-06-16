@@ -1,0 +1,20 @@
+{
+  "name": "aula-1",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:SavioRomario10/Microservico.git",
+  "author": "Sávio Romário <savioromario10@gmail.com>",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "startDev": "nodemon app.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
