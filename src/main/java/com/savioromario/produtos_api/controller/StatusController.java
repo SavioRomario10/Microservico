@@ -23,5 +23,5 @@ public class StatusController {
     
     return ResponseEntity.ok(response);
   }
-
+  
 }
