@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
 import com.savioromario.produtos_api.modules.produto.model.Category;
+import com.savioromario.produtos_api.config.exception.ValidationException;
 import com.savioromario.produtos_api.modules.produto.dto.CategoryRequest;
 import com.savioromario.produtos_api.modules.produto.dto.CategoryResponse;
 import com.savioromario.produtos_api.modules.produto.repository.CategoryRepository;
@@ -16,14 +17,14 @@ public class CategoryService {
   private CategoryRepository categoryRepository;
 
   public CategoryResponse save(CategoryRequest request){
-    var category = categoryRepository.save(Category.of(request));
     validate(request);
+    var category = categoryRepository.save(Category.of(request));
     return CategoryResponse.of(category);
   }
 
   private void validate(CategoryRequest request){
     if(ObjectUtils.isEmpty(request.getDescription())) {
-      throw new IllegalArgumentException("Description is required");
+      throw new ValidationException("Descrição é obrigatorio");
     }
   }
 }
