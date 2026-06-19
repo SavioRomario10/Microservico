@@ -1,17 +1,21 @@
 spring:
   application:
     name: produtos-api
+
+  main:
+    allow-bean-definition-overriding: true
   
   datasource:
     driver-class-name: org.postgresql
     url: jdbc:postgrssql://localhost:product-db
     username: admin
     password: 123456
-    initialization-mode: always
-    initialize: true
-    continue-on-error: true
-    platform: postgresql
-    maxActive: 3
+
+  sql:
+    init:
+      mode: always
+      continue-on-error: true
+      platform: postgresql
 
   jpa:
     hibernate:
@@ -21,6 +25,16 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQL9Dialect
+
+  rabbitmq:
+    host: ${RABBIT_MQ_HOST:localhost}
+    port: ${RABBIT_MQ_PORT:5672}
+    username: ${RABBIT_MQ_USER:guest}
+    password: ${RABBIT_MQ_PASSWORD:guest}
+
+  rabbit:
+    exchenge:
+      product: product.topic
 
 server:
   port: 8081
