@@ -10,11 +10,14 @@ import com.savioromario.produtos_api.modules.produto.dto.CategoryRequest;
 import com.savioromario.produtos_api.modules.produto.dto.CategoryResponse;
 import com.savioromario.produtos_api.modules.produto.repository.CategoryRepository;
 
+import lombok.RequiredArgsConstructor;
+
 @Service
+@RequiredArgsConstructor
 public class CategoryService {
 
   @Autowired
-  private CategoryRepository categoryRepository;
+  private final CategoryRepository categoryRepository;
 
   public CategoryResponse save(CategoryRequest request){
     validate(request);
